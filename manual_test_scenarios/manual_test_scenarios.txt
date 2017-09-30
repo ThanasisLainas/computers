@@ -1,0 +1,385 @@
+Test Scenarios - CRUD operation
+
+<Create>
+
+Test Case C1: Automated
+TestId: ts01
+Title: Add a new computer - With valid data
+Prerequisite: website and create page should be available.
+Steps:
+1. Open http://computer-database.herokuapp.com/computers
+2. Click the button "Add new computer"
+3. Insert a Computer name
+4. Insert to "introduced date" a valid date in the past
+5. Insert to "Discontinued date" a valid date in the future
+6. Select a "Company"
+7. Submit the "create this computer"
+8. Validate The message "Done! Computer @name has been created"
+9. Validate data in db
+
+Expected Outcome:
+New computer is created
+
+-----------------------------------------------------------------------------------------------
+
+Test Case C2:
+TestId: ts02
+Title: Add a new computer - Computer name Empty
+Prerequisite: website and create page should be available.
+Steps:
+1. Open http://computer-database.herokuapp.com/computers
+2. Click the button "Add new computer"
+3. Insert an empty Computer name
+4. Insert to "introduced date" a valid date in the past
+5. Insert to "Discontinued date" a valid date in the future
+6. Select a "Company"
+7. Submit the "create this computer"
+8. Validate the error message "Computer name required"
+
+Expected Outcome:
+New computer is not created and Computer name is highlighted
+
+-----------------------------------------------------------------------------------------------
+
+Test Case C3:
+TestId: ts03
+Title: Add a new computer - Special characters at field "computer name"
+Prerequisite: website and create page should be available.
+Steps:
+1. Open http://computer-database.herokuapp.com/computers
+2. Click the button "Add new computer"
+3. Insert a Computer name value "!@#$%^&*()"
+4. Insert to "introduced date" a valid date in the past
+5. Insert to "Discontinued date" a valid date in the future
+6. Select a "Company"
+7. Click on "Create this computer"
+8. Validate The message "Done! Computer @name has been created"
+
+Expected Outcome:
+New computer is created with special characters (No validation on the field)
+
+-----------------------------------------------------------------------------------------------
+
+Test Case C4:
+TestId: ts04
+Title: Add a new computer - Dates Empty
+Prerequisite: website and create page should be available.
+Steps:
+1. Open http://computer-database.herokuapp.com/computers
+2. Click the button "Add new computer"
+3. Insert an valid Computer name
+4. Insert to "introduced date" empty date
+5. Insert to "Discontinued date" empty date
+6. Select a valid "Company"
+7. Submit the "create this computer"
+8. Validate the highlighted fields
+9. Validate The message "Done! Computer @name has been created"
+
+Expected Outcome:
+New computer is created (Dates are not required fields)
+
+-----------------------------------------------------------------------------------------------
+
+Test Case C5:
+TestId: ts05
+Title: Add a new computer - Insert invalid dates
+Prerequisite: website and create page should be available.
+Steps:
+1. Open http://computer-database.herokuapp.com/computers
+2. Click the button "Add new computer"
+3. Insert an valid Computer name
+4. Insert to "introduced date" the value "0000-00-00"
+5. Insert to "Discontinued date" the value "test-incorrect-date"
+6. Select an empty "company"
+7. Submit the "create this computer"
+8. Validate the highlighted date fields
+9. Change the Insert to "introduced date" the value "asd/as/as"
+10.Change the Insert to "Discontinued date" the value "12/12/2012"
+11. Submit the "create this computer"
+12. Validate the highlighted date fields
+
+Expected Outcome:
+New computer is not created and dates are highlighted
+
+-----------------------------------------------------------------------------------------------
+
+Test Case C6:
+TestId: ts06
+Title: Add a new computer - Insert Start date in the Future and End date in the past
+Prerequisite: website and create page should be available.
+Steps:
+1. Open http://computer-database.herokuapp.com/computers
+2. Click the button "Add new computer"
+3. Insert an valid Computer name
+4. Insert to "introduced date" the value "2020-12-12"
+5. Insert to "Discontinued date" the value "1999-12-12"
+6. Select an empty "company"
+7. Submit the "create this computer"
+8. Validate The message "Done! Computer @name has been created"
+9. Validate data in db
+
+Expected Outcome:
+New computer is created (No validation on the date fields)
+
+-----------------------------------------------------------------------------------------------
+
+Test Case C7:
+TestId: ts07
+Title: Add a new computer - Add valid data and click cancel before submit
+Prerequisite: website and create page should be available.
+Steps:
+1. Open http://computer-database.herokuapp.com/computers
+2. Click the button "Add new computer"
+3. Insert a "Computer name"
+4. Insert to "Introduced date" a valid date in the past
+5. Insert to "Discontinued date" a valid date in the future
+6. Select a "Company"
+7. Click on "Cancel" before submition
+
+Expected Outcome:
+New computer is not created and user is redirected to Homepage
+
+===============================================================================================
+
+<Read>
+
+Test Case R1:
+TestId: ts08
+Title: Read - Read a newly created computer
+Prerequisite: website should be available.
+Steps:
+1. Open http://computer-database.herokuapp.com/computers
+2. Click the button "Add new computer"
+3. Insert a Computer name
+4. Insert to "Introduced date" a valid date in the past
+5. Insert to "Discontinued date" a valid date in the future
+6. Select the field "Company"
+7. Submit the "Create this computer"
+8. Validate The message "Done! Computer @name has been created"
+9. Find the newly created computer and validate data
+10. Validate the computer name by the url or the search bar
+
+Expected Outcome:
+New computer is created and presented to Homepage
+
+===============================================================================================
+
+<Update>
+
+Test Case U1: Automated
+TestId: ts9
+Title: Update computer name
+Prerequisite: website and edit page should be available. Valid test data from <Create> test scenarios.
+Steps:
+1. Open http://computer-database.herokuapp.com/computers
+2. Click at a valid computer name
+3. Update the value "Computer name"
+4. Update the field "Introduced date"
+5. Update the field "Discontinued date"
+6. Update the field "Company"
+4. Click on "Save this computer"
+5. Validate the message "Done! Computer @name has been updated"
+
+Expected Outcome:
+The computer name is updated
+
+-----------------------------------------------------------------------------------------------
+
+Test Case U2:
+TestId: ts10
+Title: Update computer "Introduced date" and "Discontinued date"
+Prerequisite: website and edit page should be available. Valid test data from <Create> test scenarios.
+Steps:
+1. Open http://computer-database.herokuapp.com/computers
+2. Click at a valid computer name
+3. Update the field "Introduced date"
+3. Update the field "Discontinued date"
+4. Click on "Save this computer"
+5. Validate the message "Done! Computer @name has been updated"
+
+Expected Outcome:
+The computer "Introduced date" and "Discontinued date" is updated
+
+-----------------------------------------------------------------------------------------------
+
+Test Case U3:
+TestId: ts11
+Title: Update computer "Company"
+Prerequisite: website and edit page should be available. Valid test data from <Create> test scenarios.
+Steps:
+1. Open http://computer-database.herokuapp.com/computers
+2. Click at a valid computer name
+3. Update the field "Company"
+4. Click on "Save this computer"
+5. Validate the message "Done! Computer @name has been updated"
+
+Expected Outcome:
+The computer "Company" is updated
+
+-----------------------------------------------------------------------------------------------
+
+Test Case U4:
+TestId: ts12
+Title: Update computer with empty "Computer Name"
+Prerequisite: website and edit page should be available. Valid test data from <Create> test scenarios.
+Steps:
+1. Open http://computer-database.herokuapp.com/computers
+2. Click at a valid computer name
+3. Update the value "Computer name" with empty value
+4. Click on "Save this computer"
+5. Validate the highlighted error message Computer name is required
+
+Expected Outcome:
+The examined Computer is not updated
+
+-----------------------------------------------------------------------------------------------
+
+Test Case U5:
+TestId: ts13
+Title: Update computer with invalid Dates
+Prerequisite: website and edit page should be available. Valid test data from <Create> test scenarios.
+Steps:
+1. Open http://computer-database.herokuapp.com/computers
+2. Click at a valid computer name
+3. Update the field "Introduced date" with value "qweqwe"
+3. Update the field "Discontinued date" with value "!@#$%"
+4. Click on "Save this computer"
+5. Validate the highlighted error messages on the dates
+
+Expected Outcome:
+The computer dates are not updated
+
+-----------------------------------------------------------------------------------------------
+
+Test Case U6:
+TestId: ts14
+Title: Update all computer fields and cancel before submitting the changes
+Prerequisite: website and edit page should be available. Valid test data from <Create> test scenarios.
+Steps:
+1. Open http://computer-database.herokuapp.com/computers
+2. Click at a valid computer name
+3. Update the field "Computer name"
+3. Update the field "Introduced date"
+3. Update the field "Discontinued date"
+3. Update the field "Company"
+4. Click cancel
+
+Expected Outcome:
+The computer "Company" is updated
+
+===============================================================================================
+
+<Delete>
+
+Test Case D1: Automated
+TestId: ts15
+Title: Read and delete a computer
+Prerequisite: website and edit page should be available. Valid test data from <Create> test scenarios.
+Steps:
+1. Open http://computer-database.herokuapp.com/computers
+2. Click on one of the computers that you created
+3. At the page of the computer click on the top right corner to "Delete this computer"
+4. Validate the message "Done! Computer has been deleted"
+5. User redirected to homepage
+6. Search this computer by name
+7. Validate that computer is not searchable by url or search bar
+8. Validate the message "Nothing to display"
+
+Expected Outcome:
+There should be an error message "Nothing to display"
+
+===============================================================================================
+
+<Search>
+
+Test Case S1:
+TestId: ts16
+Title: Search for valid computer
+Prerequisite: website should be available.
+Steps:
+1. Open http://computer-database.herokuapp.com/computers
+2. Type name of a valid computer name in the search bar
+3. Click the "Filter by name"
+4. Shown results
+
+Expected Outcome:
+Results presented on the Homepage
+
+-----------------------------------------------------------------------------------------------
+
+Test Case S2:
+TestId: ts17
+Title: Search for invalid computer
+Prerequisite: website should be available.
+Steps:
+1. Open http://computer-database.herokuapp.com/computers
+2. Type name of an invalid computer name in the search bar
+3. Click "Filter by name"
+4. Shown error message Nothing to display
+
+Expected Outcome:
+Nothing to display on the Homepage
+
+-----------------------------------------------------------------------------------------------
+
+Test Case S3:
+TestId: ts18
+Title: Search for a computer by giving a single letter
+Prerequisite: website should be available.
+Steps:
+1. Open http://computer-database.herokuapp.com/computers
+2. Type letter 's' in the search bar
+3. Click "Filter by name"
+4. Shown multiple results which include the letter 's'
+
+Expected Outcome:
+Multiple results presented in the Homepage
+
+===============================================================================================
+
+<Edge cases>
+
+Test Case EC1:
+TestId: ts19
+Title: Verify counter when adding new computer on the homepage
+Prerequisite: website should be available.
+Steps:
+1. Open http://computer-database.herokuapp.com/computers
+2. Add a new computer
+3. After creation verify that counter on the homepage increased by one
+
+Expected Outcome:
+Homepage counter should increased by one
+
+-----------------------------------------------------------------------------------------------
+
+Test Case EC2:
+TestId: ts20
+Title: Verify counter when removing computer on the homepage
+Prerequisite: website should be available.
+Steps:
+1. Open http://computer-database.herokuapp.com/computers
+2. Delete a computer
+3. After deletion verify that counter on the homepage decreased by one
+
+Expected Outcome:
+Homepage counter should decreased by one
+
+-----------------------------------------------------------------------------------------------
+
+Test Case EC3:
+TestId: ts21
+Title: Verify Previous page and Next page
+Prerequisite: website should be available.
+Steps:
+1. Open http://computer-database.herokuapp.com/computers
+2. Walk through the computer pages with Next
+3. Validate that second page loaded
+4. Walk to Previous page
+5. Validate that first page shown again
+
+Expected Outcome:
+User experience through pages
+
+===============================================================================================
+

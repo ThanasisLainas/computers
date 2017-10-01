@@ -1,8 +1,8 @@
 # Computer Project - Assignment
 
 # Test Scenarios:
-1. The Manual Test Scenarios folder contains the test scenarios which created for this assignment.
-2. The computers folder contains the automated test cases.
+1. The "manual_test_scenarios" folder contains the test scenarios which created for this assignment.
+2. The "computers" folder contains the automated test cases.
 
 # Notes:
 Out of scope because of time limitation the following:
